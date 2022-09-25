@@ -1,7 +1,7 @@
 {
-    "name": "wh-mods-dev",
+    "name": "iBeng-Botz",
     "version": "3.0.0",
-    "description": "WhatsApp BOT By wahid",
+    "description": "WhatsApp BOT By Rizky",
     "main": "index.js",
     "type": "module",
     "directories": {
