@@ -26,10 +26,6 @@ _©.iBeng_
 }
 handler.help = ['tiktok'].map(v => v + ' <url>')
 handler.tags = ['downloader']
-handler.limit = true
-handler.group = true
-
 handler.command = /^(tt|tiktoknowm||tiktok|tik)$/i
-
-module.exports = handler
 handler.limit = true
+export default handler
