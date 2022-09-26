@@ -26,6 +26,6 @@ _©.iBeng_
 }
 handler.help = ['tiktok', 'tt', 'tiktoknowm'].map(v => v + ' <url>')
 handler.tags = ['downloader']
-handler.command = /^(tt(tiktoknowm)?(tiktok)?(dl)?)$/i
-handler.limit = true
+handler.command = /^(tik(tt(tok)?(tok)?(dl)?)$/i
+
 export default handler
