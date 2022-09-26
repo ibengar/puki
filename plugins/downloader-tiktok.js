@@ -24,8 +24,12 @@ if (!args[0]) throw `Use example ${usedPrefix}${command} https://www.tiktok.com/
 _©.iBeng_
 `.trim(), m)
 }
-handler.help = ['tiktok', 'tt', 'tiktoknowm'].map(v => v + ' <url>')
+handler.help = ['tiktok'].map(v => v + ' <url>')
 handler.tags = ['downloader']
-handler.command = /^(tik(tok)?(tok)?(dl)?)$/i
 handler.limit = true
-export default handler
+handler.group = true
+
+handler.command = /^(tt|tiktoknowm||tiktok|tik)$/i
+
+module.exports = handler
+handler.limit = true
