@@ -24,8 +24,8 @@ if (!args[0]) throw `Use example ${usedPrefix}${command} https://www.tiktok.com/
 _©.iBeng_
 `.trim(), m)
 }
-handler.help = ['tiktok'].map(v => v + ' <url>')
+handler.help = ['tiktok', 'tt', 'tiktoknowm'].map(v => v + ' <url>')
 handler.tags = ['downloader']
-handler.command = /^(tt|tiktoknowm||tiktok|tik)$/i
+handler.command = /^(tt(tiktoknowm)?(tiktok)?(dl)?)$/i
 handler.limit = true
 export default handler
