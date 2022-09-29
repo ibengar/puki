@@ -32,7 +32,7 @@ let wibh = moment.tz('Asia/Jakarta').format('HH')
 // kalo ga punya ketik "-" atau biarin aja biar ada creditsnya :v
 global.sig = 'https://instagram.com/achmdrizky148'
 global.sgh = '-' //github
-global.sgc = 'https://chat.whatsapp.com/ByhYR5yoAW274BNlkBs64d' //group whatsapp
+global.sgc = 'https://chat.whatsapp.com/J1Zig8VE7klDHUb35YVj9L' //group whatsapp
 global.sdc = '-' //discord
 global.snh = '_' // my youtube channel
 
@@ -46,7 +46,7 @@ global.ppulsa2 = '081257172080' // kalau ada kartu lain isi aja
 global.psaweria = '081257172080'
 
 /*============== NOMOR ==============*/
-global.nomorbot = '6285246423078'
+global.nomorbot = '6289503398304'
 global.nomorown = '6281257172080'
 global.namebot = 'iBeng-BoTz'
 global.nameown = 'Rizky iBeng'
