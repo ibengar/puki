@@ -699,9 +699,9 @@ export async function participantsUpdate({ id, participants, action }) {
                                 membercount: groupMetadata.participants.length
                             })
     conn.sendButtonDoc(id, text, wm, action == 'add' ? 'ᴡᴇʟᴄᴏᴍᴇ' : 'sᴀʏᴏɴᴀʀᴀᴀ', action === 'add' ? '.intro' : 'ibeng', fkontak, { contextInfo: { externalAdReply: { showAdAttribution: true,
-    mediaUrl: "",
+    mediaUrl: "https://telegra.ph/file/eeb37332fa2f2c9cb064e.jpg",
     mediaType: 2, 
-    description: "", 
+    description: "https://telegra.ph/file/eeb37332fa2f2c9cb064e.jpg", 
     title: 'iBeng-BOT-V1-MultiDevice',
     body: wm,
     thumbnail: await(await fetch(action === 'add' ? wel : lea)).buffer(),
