@@ -13,6 +13,12 @@ const defaultMenu = {
 %m2 *Name:* %name
 %m2 *Tag:* %tag
 %m2 *Status:* %prems
+%m2 *Limit:* %limit
+%m2 *Money:* %money
+%m2 *Role:* %role
+%m2 *Level:* %level [ %xp4levelup Xp For Levelup]
+%m2 *Xp:* %exp / %maxexp
+%m2 *Total Xp:* %totalexp
 %m3
 
 %m1 *T O D A Y*
@@ -23,10 +29,22 @@ const defaultMenu = {
 %m2 *Time:* %wib
 %m3
 
+%m1 *I N F O*
+%m2 *Bot Name:* %me
+%m2 *Mode:* %mode
+%m2 *Platform:* %platform
+%m2 *Type:* Node.Js
+%m2 *Baileys:* Multi Device
+%m2 *Prefix:* [ *%_p* ]
+%m2 *Uptime:* %muptime
+%m2 *Database:* %rtotalreg dari %totalreg
+%m3
+
 %m1 *I N F O  C M D* 
 %m4 *Ⓟ* = Premium
 %m4 *Ⓛ* = Limit
 %m3
+
 `.trimStart(),
   header: '%cc *%category* %c1',
   body: '%c2 %cmd %isPremium %islimit',
@@ -262,6 +280,15 @@ let tek = `*${ucapan()} ${conn.getName(m.sender)}*
 ┊↬✗• *sᴛᴀᴛᴜs:* ${m.sender.split`@`[0] == nomorown ? 'Developer' : (usrs.premiumTime >= 1 ? 'Premium User' : 'Free User')}
 ┊↬✗• *ᴘʀᴇᴍɪᴜᴍ:* ${usrs.premiumTime > 1 ? 'Yes': 'No'}
 ┗–––––––––––––––––✥
+┌–––––––––––––––––✥
+┊   「 *S t a t u s  I n f o 比* 」
+┊↬✗• *ᴜᴘᴛɪᴍᴇ:* ${mpt}
+┊↬✗• *ᴛɪᴍᴇ:* ${moment.tz('Asia/Jakarta').format('HH')} H  ${moment.tz('Asia/Jakarta').format('mm')} M  ${moment.tz('Asia/Jakarta').format('ss')} S
+┊↬✗• *ᴜsᴇʀs:* ${Object.keys(global.db.data.users).length}
+┊↬✗• *ʟɪᴍɪᴛ:* ${usrs.limit}
+┊↬✗• *ʟᴇᴠᴇʟ:* ${usrs.level}
+┊↬✗• *ʀᴏʟᴇ:* ${usrs.role}${usrs.premiumTime > 1 ? `
+┗––––––––––––––––––✥
 ┊↬✗• *ᴇxᴘɪʀᴇᴅ ᴘʀᴇᴍɪᴜᴍ:*
 ${clockStringP(usrs.premiumTime - new Date())}` : ''}
 `
@@ -270,7 +297,7 @@ const listMessage = {
   footer: '📮 *Note:* Jika menemukan bug, error atau kesulitan dalam penggunaan silahkan laporkan/tanyakan kepada Owner',
   mentions: await conn.parseMention(tek),
   title: `${htki} *LIST MENU* ${htka}`,
-  buttonText: `CLICK DISINI ⎙`, 
+  buttonText: `CLICK DISINI COK ⎙`, 
   sections
 }
   if (teks == '404') {
