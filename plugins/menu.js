@@ -13,12 +13,6 @@ const defaultMenu = {
 %m2 *Name:* %name
 %m2 *Tag:* %tag
 %m2 *Status:* %prems
-%m2 *Limit:* %limit
-%m2 *Money:* %money
-%m2 *Role:* %role
-%m2 *Level:* %level [ %xp4levelup Xp For Levelup]
-%m2 *Xp:* %exp / %maxexp
-%m2 *Total Xp:* %totalexp
 %m3
 
 %m1 *T O D A Y*
