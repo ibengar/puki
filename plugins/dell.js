@@ -1,19 +1,38 @@
-let handler = function (m) {
-    /*if (!m.quoted) throw false
-    let { chat, fromMe, isBaileys } = m.quoted
-    if (!fromMe) throw false
-    if (!isBaileys) throw 'Pesan tersebut bukan dikirim oleh bot!'
-    conn.sendMessage(chat, { delete: m.quoted.vM.key })*/
-    if (!m.quoted) throw false
-    let { chat, fromMe, id, isBaileys } = m.quoted
- //   if (!isBaileys) throw 'Pesan tersebut bukan dikirim oleh bot!'
-    conn.sendMessage(m.chat, { delete: { remoteJid: m.chat, fromMe: true, id: m.quoted.id, participant: m.quoted.sender } })
-
+let handler = async (m, { conn, isOwner, isAdmin }) => {
+	if (!m.quoted) throw false
+	let { chat, fromMe } = m.quoted
+	let charm = db.data.chats[m.chat]
+	if (!fromMe) {
+		if (isOwner || isAdmin) {
+			try {
+				if ((!charm.nsfw && m.isGroup) || isOwner) {
+					conn.sendMessage(chat, { delete: { remoteJid: m.chat, fromMe: false, id: m.quoted.id, participant: m.quoted.sender } })
+				} else {
+					m.reply(`Tidak dapat hapus pesan saat *nsfw* aktif!`)
+				}
+			} catch (e) {
+				console.log(e)
+			}
+		} else {
+			m.reply(`*「ADMIN GROUP ONLY」*`)
+		}
+	} else {
+		try {
+			if ((!charm.nsfw && m.isGroup) || isOwner) {
+				conn.sendMessage(chat, { delete: m.quoted.vM.key })
+			} else {
+				m.reply(`Tidak dapat hapus pesan saat *nsfw* aktif!`)
+			}
+		} catch (e) {
+			console.log(e)
+		}
+	}
 }
-handler.help = ['del2', 'd']
-handler.tags = ['tools']
 
-handler.command = /^del2(ete)?$/i
-handler.limit = true
+handler.menugroup = ['del2', 'd']
+handler.tagsgroup = ['tools']
+handler.command = /^(d(el(ete)?)?)$/i
 
-module.exports = handler
+handler.group = true
+
+export default handler
