@@ -16,14 +16,6 @@ const defaultMenu = {
 %m2 *Limit:* %limit
 %m3
 
-%m1 *T O D A Y*
-%m2 *%ucpn*
-%m3
-
-%m1 *I N F O*
-%m2 *Bot Name:* %me
-%m3
-
 %m1 *I N F O  C M D* 
 %m4 *Ⓟ* = Premium
 %m4 *Ⓛ* = Limit
