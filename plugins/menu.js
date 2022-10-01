@@ -14,6 +14,7 @@ const defaultMenu = {
 %m2 *Tag:* %tag
 %m2 *Status:* %prems
 %m2 *Limit:* %limit
+REST API : *https://rest-api-ibeng.herokuapp.com/*
 
 `.trimStart(),
   header: '%cc *%category* %c1',
