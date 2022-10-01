@@ -494,20 +494,20 @@ const listMessage = {
                 },
                 {
                     quickReplyButton: {
-                        displayText: 'Owner',
-                        id: '.owner'
+                        displayText: '',
+                        id: ''
                     }
                 },
                 {
                     quickReplyButton: {
-                        displayText: 'Speed',
-                        id: '.speed'
+                        displayText: '',
+                        id: ''
                     }
                 },
                 {
                     quickReplyButton: {
-                        displayText: 'Donasi',
-                        id: '.donasi'
+                        displayText: '',
+                        id: ''
                     }
                 },
             ]
