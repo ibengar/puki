@@ -16,11 +16,6 @@ const defaultMenu = {
 %m2 *Limit:* %limit
 %m3
 
-%m1 *I N F O  C M D* 
-%m4 *Ⓟ* = Premium
-%m4 *Ⓛ* = Limit
-%m3
-
 `.trimStart(),
   header: '%cc *%category* %c1',
   body: '%c2 %cmd %isPremium %islimit',
