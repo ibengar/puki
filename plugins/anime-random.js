@@ -122,7 +122,7 @@ handler.command = handler.help = ['akira', 'akiyama', 'anna', 'ana', 'asuna', 'a
 handler.tags = ['anime']
 export default handler */
 
-import axios from "axios"
+/*import axios from "axios"
 let handler = async (m, {command, conn}) => {
 if (command == 'akira') {
 let haha = await conn.getFile(`https://api-reysekha.herokuapp.com/api/wallpaper/akira?apikey=APIKEY`)
@@ -232,7 +232,7 @@ conn.sendButton(m.chat, `_${command}_`.trim(), author, haha.data, [['ðŸ”„ NEXT ð
 }
 handler.command = handler.help = ['akira', 'akiyama', 'anna', 'asuna', 'ayuzawa', 'boruto', 'chiho', 'chitoge', 'deidara', 'erza', 'elaina', 'eba', 'emilia', 'hestia', 'hinata', 'inori', 'isuzu', 'itachi', 'itori', 'kaga', 'kagura', 'kaori', 'keneki', 'kotori', 'kurumi', 'madara', 'mikasa', 'miku', 'minato', 'naruto', 'nezuko', 'sagiri', 'sasuke', 'sakura', 'cosplay']
 handler.tags = ['anime']
-export default handler
+export default handler/*
 
 
 
