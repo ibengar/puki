@@ -14,7 +14,6 @@ const defaultMenu = {
 %m2 *Tag:* %tag
 %m2 *Status:* %prems
 %m2 *Limit:* %limit
-%m3
 
 `.trimStart(),
   header: '%cc *%category* %c1',
