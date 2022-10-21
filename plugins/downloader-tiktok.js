@@ -1,31 +1,26 @@
-import { tiktokdl, tiktokdlv2, tiktokdlv3 } from '@bochilteam/scraper'
+import fetch from 'node-fetch'
 
-let handler = async (m, { conn, args, usedPrefix, command }) => {
-if (!args[0]) throw `Use example ${usedPrefix}${command} https://www.tiktok.com/@omagadsus/video/7025456384175017243`
-    const { author: { nickname }, video, description } = await tiktokdl(args[0])
-    .catch(async _ => await tiktokdlv2(args[0]))
-        .catch(async _ => await tiktokdlv3(args[0]))
-    const url = video.no_watermark || video.no_watermark2 || video.no_watermark_raw
-    if (!url) throw 'Can\'t download video!'
-    conn.sendFile(m.chat, url, 'tiktok.mp4', 
-`              *「 🇹 ᴛ ɪ ᴋ ᴛ ᴏ ᴋ 」*
-                 ████████▀▀▀████
-                 ████████────▀██
-                 ████████──█▄──█
-                 ███▀▀▀██──█████
-                 █▀──▄▄██──█████
-                 █──█████──█████
-                 █▄──▀▀▀──▄█████
-                 ███▄▄▄▄▄███████
-────────── ⇆ㅤ◁ㅤ ❚❚ㅤ ▷ㅤ↻ ──────────
-*Nickname:* ${nickname}
-*Description:* ${description}
+let handler = async (m, { conn, args }) => {
+if (!args[0]) throw 'Uhm..url nya mana?'
+m.reply('Tunggu sebentar...')
+let res = await fetch(`https://ibeng-api.ddns.net/api/downloader/tiktok2?url=${args[0]}&apikey=ibeng`)
+if (!res.ok) throw await res.text()
+let json = await res.json()
+if (!json.status) throw json
+let { video, description, username } = json.result
+await conn.sendFile(m.chat, video, 'video.mp4', `
+🧏 Username: ${username}
+📋 Deskripsi: ${description}
+🔗 Url: ${video}
 
-_©.iBeng_
-`.trim(), m)
+
+`, m, false, { contextInfo: { forwardingScore: 999, isForwarded: true }})
 }
-handler.help = ['tiktok', 'tt', 'tiktoknowm'].map(v => v + ' <url>')
+
+handler.help = ['tiktok <url>']
 handler.tags = ['downloader']
-handler.command = /^(tt|tiktoknowm||tiktok|tik)$/i
+
+handler.command = /^(tt|tiktok|tiktoknowm)$/i
+handler.limit = true
 
 export default handler
