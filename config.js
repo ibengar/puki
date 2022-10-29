@@ -46,7 +46,7 @@ global.ppulsa2 = '081257172080' // kalau ada kartu lain isi aja
 global.psaweria = '081257172080'
 
 /*============== NOMOR ==============*/
-global.nomorbot = '6289503398304'
+global.nomorbot = '16788559640'
 global.nomorown = '6281257172080'
 global.namebot = 'iBeng-BoTz'
 global.nameown = 'Rizky iBeng'
