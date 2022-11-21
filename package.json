@@ -82,6 +82,7 @@
         "https": "^1.0.0",
         "human-readable": "^0.2.1",
         "instagram-url-direct": "^1.0.12",
+        "api-dylux": "^1.2.2",
         "hxz-api": "github:Hexagonz/Hexa-Api",
         "imgbb-uploader": "^1.5.0",
         "jimp": "^0.16.1",
