@@ -1,23 +1,31 @@
-//powered by jarot offc
-let fetch = require('node-fetch')
-let axios = require('axios')
-let handler = async (m, { conn, args }) => {
-if (!args[0]) throw 'Uhm..url nya mana?'
-m.reply('wait')
- let res = (await axios.get(API('males', '/tiktok', { url: args[0] } ))).data;
-if (res.status != 200) throw res.message;
-if (!res) throw res.message;
-let result = `❖❖⟝⟮ *𝚃𝚒𝚝𝚕𝚎:* ⟯⟞❖❖
- ${res.title}
+import { tiktokdl, tiktokdlv2, tiktokdlv3 } from '@bochilteam/scraper'
 
-❖❖⟝⟮ *Author* ⟯⟞❖❖
-${res.author}
-`
-await conn.sendFile(m.chat, res.video, 'video.mp4', result, m)
+let handler = async (m, { conn, args, usedPrefix, command }) => {
+if (!args[0]) throw `Use example ${usedPrefix}${command} https://www.tiktok.com/@omagadsus/video/7025456384175017243`
+    const { author: { nickname }, video, description } = await tiktokdl(args[0])
+    .catch(async _ => await tiktokdlv2(args[0]))
+        .catch(async _ => await tiktokdlv3(args[0]))
+    const url = video.no_watermark || video.no_watermark2 || video.no_watermark_raw
+    if (!url) throw 'Can\'t download video!'
+    conn.sendFile(m.chat, url, 'tiktok.mp4', 
+`              *「 🇹 ᴛ ɪ ᴋ ᴛ ᴏ ᴋ 」*
+                 ████████▀▀▀████
+                 ████████────▀██
+                 ████████──█▄──█
+                 ███▀▀▀██──█████
+                 █▀──▄▄██──█████
+                 █──█████──█████
+                 █▄──▀▀▀──▄█████
+                 ███▄▄▄▄▄███████
+────────── ⇆ㅤ◁ㅤ ❚❚ㅤ ▷ㅤ↻ ──────────
+*Nickname:* ${nickname}
+*Description:* ${description}
+
+_©.iBeng_
+`.trim(), m)
 }
-handler.help = ['tiktok <url>']
+handler.help = ['tiktok', 'tt', 'tiktoknowm'].map(v => v + ' <url>')
 handler.tags = ['downloader']
+handler.command = /^(tik(tt(tok)?(tok)?(dl)?)$/i
 
-handler.command = /^(tt|tiktok)$/i
-handler.limit = true
-module.exports = handler
+export default handler
