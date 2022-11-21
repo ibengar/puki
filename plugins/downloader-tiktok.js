@@ -1,17 +1,16 @@
-/**Coba aja dlu gua bingung mau pake scraper suka error makanya 
-Coba pake apikey malesin dlu wkwk**/
-
-let https = require('axios')
-let handler = async (m, { conn, args, usedPrefix, command }) => {
-if (!args[0]) throw `contoh:\n ${usedPrefix}${command} https://vm.tiktok.com/ZGJAmhSrp/`
-let tio = (await https.get(API('males', '/tiktok', { url: args[0] } ))).data;
-if (tio.status != 200) throw tio.message;
-if (!tio) throw tio.message;
- let hasilnya = `*Title:* ${tio.title}\n\n*Author:* ${tio.author}`
-  conn.sendButtonVid(m.chat, tio.video, hasilnya, wm, `Back`, `.menu`, m)
-        }
+const { tiktokdl, tiktokdlv2, tiktokdlv3 } = require('@bochilteam/scraper')
+let handler = async (m, { conn, args, usedPrefix, command, isOwner }) => {
+	if (!args[0]) throw `Link tiktoknya mana?\n\ncontoh:\n${usedPrefix}${command} https://vm.tiktok.com/ZGJAmhSrp/`
+    tiktokdlv3(args[0]).then(r => {
+    let video = r.video.no_watermark
+    conn.sendFile(m.chat, video, '', `*${wm}*`, m)
+    })
+}
 handler.help = ['tiktok'].map(v => v + ' <url>')
 handler.tags = ['downloader']
-handler.command = /^(tiktok|ttdl|tt|tiktokdl|tiktoknowm)$/i
 handler.limit = true
+handler.group = false
+
+handler.command = /^(tt|tiktok|tik)$/i
+
 module.exports = handler
