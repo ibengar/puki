@@ -1,16 +1,23 @@
-const { tiktokdl, tiktokdlv2, tiktokdlv3 } = require('@bochilteam/scraper')
-let handler = async (m, { conn, args, usedPrefix, command, isOwner }) => {
-	if (!args[0]) throw `Link tiktoknya mana?\n\ncontoh:\n${usedPrefix}${command} https://vm.tiktok.com/ZGJAmhSrp/`
-    tiktokdlv3(args[0]).then(r => {
-    let video = r.video.no_watermark
-    conn.sendFile(m.chat, video, '', `*${wm}*`, m)
-    })
+//powered by jarot offc
+let fetch = require('node-fetch')
+let axios = require('axios')
+let handler = async (m, { conn, args }) => {
+if (!args[0]) throw 'Uhm..url nya mana?'
+m.reply('wait')
+ let res = (await axios.get(API('males', '/tiktok', { url: args[0] } ))).data;
+if (res.status != 200) throw res.message;
+if (!res) throw res.message;
+let result = `❖❖⟝⟮ *𝚃𝚒𝚝𝚕𝚎:* ⟯⟞❖❖
+ ${res.title}
+
+❖❖⟝⟮ *Author* ⟯⟞❖❖
+${res.author}
+`
+await conn.sendFile(m.chat, res.video, 'video.mp4', result, m)
 }
-handler.help = ['tiktok'].map(v => v + ' <url>')
+handler.help = ['tiktok <url>']
 handler.tags = ['downloader']
+
+handler.command = /^(tt|tiktok)$/i
 handler.limit = true
-handler.group = false
-
-handler.command = /^(tt|tiktok|tik)$/i
-
 module.exports = handler
